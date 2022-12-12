@@ -9,6 +9,7 @@ var app = express();
 
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/uploads', express.static(process.cwd() + '/uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -22,7 +23,6 @@ app.post('/api/fileanalyse',upload.single('upfile'),(req,res)=>{
 
 app.get('/uploaded',(req,res)=>{
   res.sendFile(process.cwd() + '/views/uploaded.html')
-  res.sendFile(process.cwd() + '/uploads/IMG_1106.JPG')
 })
 
 const port = process.env.PORT || 3000;
